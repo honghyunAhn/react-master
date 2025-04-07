@@ -1,7 +1,17 @@
-import { DefaultTheme } from "styled-components";
+import { DarkTheme, LightTheme } from "styled-components";
 
-export const theme: DefaultTheme = {
-  bgColor: "#2f3640",
-  textColor: "#f5f6fa",
-  accentColor: "#4cd137",
+export const darkTheme: DarkTheme = {
+  bgColor: "#2C3333",
+  textColor: "#E7F6F2",
+  accentColor: "#96D9FF",
+  divColor: "#2D3D40",
+  grayText: "#C6CCCF",
+};
+
+export const lightTheme: LightTheme = {
+  bgColor: "#EEF5FF",
+  textColor: "#404756",
+  accentColor: "#009F96",
+  divColor: "#FFFFFA",
+  grayText: "#C6CCCF",
 };
