@@ -1,6 +1,7 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Router from "./Router";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { useState } from "react";
+import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -67,12 +68,32 @@ a {
 }
 `;
 
+const ButtonStyle = styled.div`
+  padding: 0px 20px;
+  max-width: 480px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledBsFillMoonFill = styled(BsFillMoonFill)`
+  width: 30px;
+  height: 30px;
+`;
+
+const StyledBsFillSunFill = styled(BsFillSunFill)`
+  width: 30px;
+  height: 30px;
+`;
+
 function App() {
   return (
     <>
       <GlobalStyle />
       <Router />
-      <ReactQueryDevtools initialIsOpen={true} />
     </>
   );
 }
