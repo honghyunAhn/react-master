@@ -1,6 +1,7 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import Router from "./Router";
 import { useState } from "react";
+import { darkTheme, lightTheme } from "./theme";
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 
 const GlobalStyle = createGlobalStyle`
@@ -90,10 +91,25 @@ const StyledBsFillSunFill = styled(BsFillSunFill)`
 `;
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const toggleDarkMode = () => {
+    setDarkMode((props) => !props);
+  };
   return (
     <>
-      <GlobalStyle />
-      <Router />
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+        <GlobalStyle />
+        <ButtonStyle>
+          <p onClick={() => toggleDarkMode()}>
+            {darkMode ? (
+              <StyledBsFillSunFill color="white" />
+            ) : (
+              <StyledBsFillMoonFill color="black" />
+            )}
+          </p>
+        </ButtonStyle>
+        <Router />
+      </ThemeProvider>
     </>
   );
 }
