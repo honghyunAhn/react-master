@@ -151,6 +151,15 @@ function Coin() {
     queryFn: () => fetchCoinTickers(coinId),
   });
   const loading = infoLoading || tickersLoading;
+  const ath_price = tickersData?.quotes.USD.ath_price;
+  const ath_date = tickersData?.quotes.USD.ath_date;
+  const percent_change_30m = tickersData?.quotes.USD.percent_change_30m;
+  const percent_change_1h = tickersData?.quotes.USD.percent_change_1h;
+  const percent_change_24h = tickersData?.quotes.USD.percent_change_24h;
+  const percent_change_7d = tickersData?.quotes.USD.percent_change_7d;
+  const percent_change_30d = tickersData?.quotes.USD.percent_change_30d;
+  const percent_change_1y = tickersData?.quotes.USD.percent_change_1y;
+  const percent_from_price_ath = tickersData?.quotes.USD.percent_from_price_ath;
   return (
     <Container>
       <Header>
@@ -195,7 +204,20 @@ function Coin() {
               <Link to={`/${coinId}/price`}>Price</Link>
             </Tab>
           </Tabs>
-          <Outlet context={{ coinId }} />
+          <Outlet
+            context={{
+              coinId,
+              ath_price,
+              ath_date,
+              percent_change_30m,
+              percent_change_1h,
+              percent_change_24h,
+              percent_change_7d,
+              percent_change_30d,
+              percent_change_1y,
+              percent_from_price_ath,
+            }}
+          />
         </>
       )}
     </Container>
