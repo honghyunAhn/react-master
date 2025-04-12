@@ -9,6 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
+import { GoHomeFill } from "react-icons/go";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -22,9 +23,14 @@ const Header = styled.header`
   justify-content: center;
   align-items: center;
 `;
+
 const Title = styled.h1`
   font-size: 48px;
   color: ${(props) => props.theme.accentColor};
+`;
+
+const TitleBox = styled.div`
+  display: flex;
 `;
 
 const Overview = styled.div`
@@ -75,6 +81,13 @@ const Tab = styled.span<{ $isActive: boolean }>`
 const Loader = styled.span`
   text-align: center;
   display: block;
+`;
+
+const StyledGoHomeFill = styled(GoHomeFill)`
+  width: 30px;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 10px;
 `;
 
 interface RouterState {
@@ -163,9 +176,14 @@ function Coin() {
   return (
     <Container>
       <Header>
-        <Title>
-          {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
-        </Title>
+        <TitleBox>
+          <Title>
+            {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
+          </Title>
+          <Link to={`/`}>
+            <StyledGoHomeFill />
+          </Link>
+        </TitleBox>
       </Header>
       {loading ? (
         <Loader>Loading...</Loader>
