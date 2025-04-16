@@ -14,6 +14,28 @@ interface PriceProps {
   percent_from_price_ath: number | undefined;
 }
 
+const MaxContainer = styled.div`
+  display: grid;
+  justify-items: center;
+`;
+
+const MaxBox = styled.div`
+  background-color: ${(props) => props.theme.divColor};
+  padding: 10px;
+  border-radius: 15px;
+  width: 100%;
+  margin-bottom: 20px;
+`;
+
+const MaxStyle = styled.span`
+  font-size: 14px;
+  display: grid;
+  justify-content: center;
+  text-align: left;
+  color: ${(props) => props.theme.grayText};
+  font-weight: 600;
+`;
+
 function Price() {
   const {
     ath_price,
@@ -35,7 +57,18 @@ function Price() {
     { text: "1年", value: percent_change_1y },
   ];
 
-  return <div></div>;
+  return (
+    <div>
+      <MaxContainer>
+        <MaxBox>
+          <MaxStyle>
+            最高値: {ath_price?.toFixed(3)} ({ath_date?.slice(0, 10)})
+          </MaxStyle>
+          <MaxStyle>最高値と現在の相場の差</MaxStyle>
+        </MaxBox>
+      </MaxContainer>
+    </div>
+  );
 }
 
 export default Price;
