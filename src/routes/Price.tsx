@@ -36,6 +36,21 @@ const MaxStyle = styled.span`
   font-weight: 600;
 `;
 
+const BoxContainter = styled.div`
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  margin-block-end: 10%;
+`;
+
+const Box = styled.div`
+  background-color: ${(props) => props.theme.divColor};
+  padding: 20px;
+  border-radius: 15px;
+  width: 100%;
+`;
+
 function Price() {
   const {
     ath_price,
@@ -67,6 +82,11 @@ function Price() {
           <MaxStyle>最高値と現在の相場の差</MaxStyle>
         </MaxBox>
       </MaxContainer>
+      <BoxContainter>
+        {percentList.map((item) => (
+          <Box key={item.text}></Box>
+        ))}
+      </BoxContainter>
     </div>
   );
 }
