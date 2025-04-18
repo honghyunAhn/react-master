@@ -51,6 +51,17 @@ const Box = styled.div`
   width: 100%;
 `;
 
+const Time = styled.span`
+  font-size: 13px;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 10px;
+  color: ${(props) => props.theme.grayText};
+  font-weight: 600;
+`;
+
 function Price() {
   const {
     ath_price,
@@ -84,7 +95,9 @@ function Price() {
       </MaxContainer>
       <BoxContainter>
         {percentList.map((item) => (
-          <Box key={item.text}></Box>
+          <Box key={item.text}>
+            <Time> {item.text}前と現在の相場の差</Time>
+          </Box>
         ))}
       </BoxContainter>
     </div>
