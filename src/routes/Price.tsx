@@ -62,6 +62,26 @@ const Time = styled.span`
   font-weight: 600;
 `;
 
+const PercentBox = styled.div<{ percent: number | undefined }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: ${(props) =>
+    props.percent
+      ? props.percent > 0
+        ? "#4880EE"
+        : props.percent < 0
+        ? "#DA5157"
+        : "#000"
+      : "none"};
+`;
+
+const Percent = styled.span`
+  font-size: 35px;
+  font-weight: 600;
+`;
+
 function Price() {
   const {
     ath_price,
@@ -91,12 +111,26 @@ function Price() {
             最高値: {ath_price?.toFixed(3)} ({ath_date?.slice(0, 10)})
           </MaxStyle>
           <MaxStyle>最高値と現在の相場の差</MaxStyle>
+          <PercentBox percent={percent_from_price_ath}>
+            <Percent>
+              {percent_from_price_ath && percent_from_price_ath > 0
+                ? `To the moon!`
+                : `${percent_from_price_ath}%`}
+            </Percent>
+          </PercentBox>
         </MaxBox>
       </MaxContainer>
       <BoxContainter>
         {percentList.map((item) => (
           <Box key={item.text}>
             <Time> {item.text}前と現在の相場の差</Time>
+            <PercentBox percent={item.value}>
+              <Percent>
+                {item.value && item.value > 0
+                  ? `+${item.value}%`
+                  : `${item.value}%`}
+              </Percent>
+            </PercentBox>
           </Box>
         ))}
       </BoxContainter>
