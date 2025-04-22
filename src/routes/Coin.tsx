@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 import {
   useLocation,
   useParams,
@@ -162,6 +163,7 @@ function Coin() {
   const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>({
     queryKey: ["tickers", coinId],
     queryFn: () => fetchCoinTickers(coinId),
+    refetchInterval: 5000,
   });
   const loading = infoLoading || tickersLoading;
   const ath_price = tickersData?.quotes.USD.ath_price;
@@ -175,6 +177,11 @@ function Coin() {
   const percent_from_price_ath = tickersData?.quotes.USD.percent_from_price_ath;
   return (
     <Container>
+      <Helmet>
+        <title>
+          {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
+        </title>
+      </Helmet>
       <Header>
         <TitleBox>
           <Title>
@@ -190,6 +197,7 @@ function Coin() {
       ) : (
         <>
           <Overview>
+            <Helmet></Helmet>
             <OverviewItem>
               <span>Rank:</span>
               <span>{infoData?.rank}</span>
