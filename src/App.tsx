@@ -92,9 +92,7 @@ const StyledBsFillSunFill = styled(BsFillSunFill)`
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-  const toggleDarkMode = () => {
-    setDarkMode((props) => !props);
-  };
+  const toggleDarkMode = () => setDarkMode((props) => !props);
   return (
     <>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
@@ -108,7 +106,7 @@ function App() {
             )}
           </p>
         </ButtonStyle>
-        <Router />
+        <Router darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       </ThemeProvider>
     </>
   );
