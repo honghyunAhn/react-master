@@ -5,20 +5,16 @@ import Chart from "./routes/Chart";
 import Price from "./routes/Price";
 
 interface IRouterProps {
-  toggleDarkMode: () => void;
   darkMode: boolean;
 }
 
-function Router({ toggleDarkMode, darkMode }: IRouterProps) {
+function Router({ darkMode }: IRouterProps) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={<Coins toggleDarkMode={toggleDarkMode} />}
-        ></Route>
-        <Route path="/:coinId" element={<Coin darkMode={darkMode} />}>
-          <Route path="chart" element={<Chart />} />
+        <Route path="/" element={<Coins />}></Route>
+        <Route path="/:coinId" element={<Coin />}>
+          <Route path="chart" element={<Chart darkMode={darkMode} />} />
           <Route path="price" element={<Price />} />
         </Route>
       </Routes>

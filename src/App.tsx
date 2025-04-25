@@ -106,7 +106,7 @@ function App() {
             )}
           </p>
         </ButtonStyle>
-        <Router darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <Router darkMode={darkMode} />
       </ThemeProvider>
     </>
   );

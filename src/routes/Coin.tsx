@@ -150,11 +150,7 @@ interface PriceData {
   };
 }
 
-interface ICoinsProps {
-  darkMode: boolean;
-}
-
-function Coin({ darkMode }: ICoinsProps) {
+function Coin() {
   const { coinId } = useParams();
   const location = useLocation();
   const state = location.state as RouterState;
@@ -236,7 +232,6 @@ function Coin({ darkMode }: ICoinsProps) {
           </Tabs>
           <Outlet
             context={{
-              darkMode,
               coinId,
               ath_price,
               ath_date,
