@@ -10,13 +10,13 @@ interface IRouterProps {
 
 function Router({ darkMode }: IRouterProps) {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
-        <Route path="/" element={<Coins />}></Route>
         <Route path="/:coinId" element={<Coin />}>
           <Route path="chart" element={<Chart darkMode={darkMode} />} />
           <Route path="price" element={<Price />} />
         </Route>
+        <Route path="/" element={<Coins />}></Route>
       </Routes>
     </BrowserRouter>
   );
