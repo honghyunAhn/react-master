@@ -13,6 +13,7 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "apexcharts": "^4.5.0",
+    "gh-pages": "^6.3.0",
     "react": "^19.0.0",
     "react-apexcharts": "^1.7.0",
     "react-dom": "^19.0.0",
@@ -28,7 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -51,5 +54,6 @@
   "devDependencies": {
     "@tanstack/react-query-devtools": "^5.69.0",
     "@types/react-helmet": "^6.1.11"
-  }
+  },
+  "homepage": "http://honghyunAhn.github.io/react-master"
 }
