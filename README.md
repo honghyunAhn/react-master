@@ -1,6 +1,7 @@
 # 仮想通貨相場トラッカー
 
-#### url : http://honghyunAhn.github.io/react-master
+#### url : [Coin](http://honghyunAhn.github.io/react-master)
+#### Notion : [Coin Notion 筆記](https://anh288.notion.site/React-js-Master-1a5158daee46808587cff2f81a58aebc)
 
 ## 機能
 
